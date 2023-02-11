@@ -34,20 +34,7 @@ struct WeatherApp: App {
             .environmentObject(userData)
             .environmentObject(cityData)
             .task(cityData.getCityData)
+            .task(userData.load)
         }
-    }
-    
-    // DOESN'T WORK
-    func checkConnection() -> Bool {
-        var isConnected: Bool = true
-        networkMonitor.pathUpdateHandler = { path in
-            if path.status == .satisfied {
-                isConnected = true
-            }
-            else {
-                isConnected = false
-            }
-        }
-        return isConnected
     }
 }
